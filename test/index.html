@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+    <style>
+        .fl {
+            height: 50px;
+            width: 50px;
+            background-color: #cee;
+        }
+        .fr {
+            height: 50px;
+            width: 50px;
+            background-color: #cee;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-header class="ll"></my-header>
+    </div>
+</body>
+
+<script type="text/html" id="Compon">
+    <header class="header">
+        <div class="fl">哈哈</div>
+        <div>头部</div>
+        <div class="fr">嘿嘿</div>
+    </header>
+</script>
+
+<script type="text/javascript">
+    // 定义组件
+    const test = Vue.extend({
+        template: "#Compon"
+    })
+
+    Vue.component('my-header', test);
+
+    new Vue({
+        el: "#app",
+    })
+</script>
+</html>

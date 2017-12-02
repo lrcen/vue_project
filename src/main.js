@@ -8,13 +8,52 @@ import App from './App.vue';
 // 安装Vue: cnpm i vue --save
 // 然后导入第三方包
 import Vue from 'vue';
+
+// 导入mint-ui
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+Vue.use(Mint); // 通过use方法集成
+
+// 导入路由
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+// 导入vue-resource
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+
+// 定义组件
+import home from '@/home/home';
+import category from '@/category/category';
+import newslist from '@/news/news';
+
+// 导入mui样式
+import './statics/css/mui.css';
+import './statics/fonts/mui.ttf';
+
+// 导入公共样式
+import './statics/css/style.css';
+
+// 创建路由对象, 设置路由规则
+const router = new VueRouter({
+    routes: [
+        {path: '/', redirect: '/home'}, //重定向
+        {path: '/home', component: home},
+        {path: '/category', component: category},
+        {path: '/news/newsList', component: newslist}
+    ]
+})
+
 // 创建根实例, 在根实例中, 让框架第一个显示App.vue
 new Vue({
     el: "#app",
+    router,
     // 想要第一个就显示App.vue, 需要render属性
-    render: function(createElement) {
-        return createElement(App);
-    }
+    // render: function(createElement) {
+    //     return createElement(App);
+    // }
+    // 箭头函数写法:
+    render: h => h(App)
 });
 
 // 终端执行命令 : webpack-dev-server --progress --config webpack.config.dev.js --open --port 4000 --hot

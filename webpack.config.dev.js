@@ -17,8 +17,20 @@ module.exports = {
                 use: [
                     {loader: 'vue-loader'}
                 ]
+            },
+            {
+                test: /\.(ttf|png)$/,
+                use: [
+                    {loader: 'file-loader'}
+                ]
             }
         ]
+    },
+    resolve: {
+        alias: {
+            '@': './components'  // 设置别名, 用于代替后面的路径
+        },
+        extensions: ['.vue', '.js', '.json', '*']  // 自动补齐扩展名
     },
     // 插件
     plugins: [
