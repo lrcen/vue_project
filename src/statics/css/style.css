@@ -8,3 +8,7 @@ body {
     padding-top: 40px;
     background-color: #fff;
 }
+
+.content p img {
+    width: 100%;
+}

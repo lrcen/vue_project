@@ -34,13 +34,27 @@ import './statics/fonts/mui.ttf';
 // 导入公共样式
 import './statics/css/style.css';
 
+// 导入moment
+import moment from 'moment';
+
+// 过滤器
+Vue.filter('timeFormat', function(input, formatString) { // 很多地方要用, 定义为全局
+    var lastFormat = formatString || 'YYYY-MM-DD HH:mm:ss';  // 如果没有指定要转为什么格式的时间, 默认为年-月-日 时:分:秒
+
+    return moment(input).format(lastFormat);
+});
+
+// 导入新闻详情组件
+import newsdetail from './components/news/newsdetail';
+
 // 创建路由对象, 设置路由规则
 const router = new VueRouter({
     routes: [
         {path: '/', redirect: '/home'}, //重定向
         {path: '/home', component: home},
         {path: '/category', component: category},
-        {path: '/news/newsList', component: newslist}
+        {path: '/news/newsList', component: newslist},
+        {path: '/news/newsDetail/:newsId', component: newsdetail}
     ]
 })
 

@@ -1,6 +1,6 @@
 <template type="text/html" id="homeCom">
   <div>
-    <mt-swipe :auto="100000">
+    <mt-swipe :auto="3000">
       <mt-swipe-item v-for="(item, index) in swipers" v-bind:key="index">
         <img :src="item.img" alt="">
       </mt-swipe-item>
@@ -65,6 +65,8 @@
 </template>
 
 <script>
+  import requestUrl from '../../common/common.js';
+
   // 规定写法
   export default {
     template: "#homeCom",
@@ -81,7 +83,7 @@
     },
     methods: {
       getSwipers() {
-        const url = 'http://vue.studyit.io/api/getlunbo';
+        const url = `${requestUrl.requestUrl}api/getlunbo`;
 
         this.$http.get(url).then(response => {
           this.swipers = response.body.message;
